@@ -43,7 +43,7 @@ import frc.robot.Constants.SwerveConstants;
 public class SwerveSubsystem extends SubsystemBase {
   private final SwerveDrive swerveDrive;
 
-  //private Optional<Alliance> alliance = DriverStation.getAlliance();
+  //private Optional<Alliance> falliance = DriverStation.getAlliance();
   private double allianceInverse = 1;
   //private boolean isRed;
 
@@ -62,9 +62,12 @@ public class SwerveSubsystem extends SubsystemBase {
 
     swerveDrive.setHeadingCorrection(false); // Heading correction should only be used while controlling the robot via angle
 
-    /*if (alliance.isPresent()) {
-      if (alliance.get() == DriverStation.Alliance.Red) { allianceInverse = -1; }
+    /*if (allianceControl.isPresent()) {
+      if (allianceControl.get() == DriverStation.Alliance.Red) { allianceInverse = -1; }
     }*/
+    /*if (DriverStation.getAlliance().get() == DriverStation.Alliance.Red) { 
+      allianceInverse = -1;}*/
+   //else {allianceInverse = 1;}
   }
 
 
@@ -400,7 +403,7 @@ public class SwerveSubsystem extends SubsystemBase {
 
   // Resets the gyro angle
   public void resetGyro(){
-    swerveDrive.setGyro(new Rotation3d(0, 0, 0));
+    swerveDrive.setGyro(new Rotation3d(0, 0, 0) );
   }
 
 
@@ -422,6 +425,9 @@ public class SwerveSubsystem extends SubsystemBase {
 
   @Override
   public void periodic() {
+    if (DriverStation.getAlliance().get() == DriverStation.Alliance.Red) { 
+      allianceInverse = -1;}
+      else {allianceInverse = 1;}
 /* 
     if (alliance.get() == DriverStation.Alliance.Red)
     {isRed = true;}
