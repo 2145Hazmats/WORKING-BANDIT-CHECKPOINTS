@@ -1,0 +1,43 @@
+{
+  "version": 1.0,
+  "startingPose": {
+    "position": {
+      "x": 1.28,
+      "y": 5.528365618134744
+    },
+    "rotation": 0
+  },
+  "command": {
+    "type": "sequential",
+    "data": {
+      "commands": [
+        {
+          "type": "named",
+          "data": {
+            "name": "ArmToFloor"
+          }
+        },
+        {
+          "type": "path",
+          "data": {
+            "pathName": "CS N2"
+          }
+        },
+        {
+          "type": "path",
+          "data": {
+            "pathName": "CS N1"
+          }
+        },
+        {
+          "type": "path",
+          "data": {
+            "pathName": "CS N3"
+          }
+        }
+      ]
+    }
+  },
+  "folder": "Riley's OP Autos",
+  "choreoAuto": false
+}

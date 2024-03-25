@@ -1,0 +1,96 @@
+{
+  "version": 1.0,
+  "waypoints": [
+    {
+      "anchor": {
+        "x": 1.28,
+        "y": 5.528365618134744
+      },
+      "prevControl": null,
+      "nextControl": {
+        "x": 2.2799999999999985,
+        "y": 5.528365618134744
+      },
+      "isLocked": false,
+      "linkedName": "Center Sub"
+    },
+    {
+      "anchor": {
+        "x": 2.5670791427174855,
+        "y": 5.528365618134744
+      },
+      "prevControl": {
+        "x": 2.251202352660578,
+        "y": 5.5365227668383685
+      },
+      "nextControl": {
+        "x": 3.1763466744315205,
+        "y": 5.512631996631289
+      },
+      "isLocked": false,
+      "linkedName": null
+    },
+    {
+      "anchor": {
+        "x": 1.28,
+        "y": 5.528365618134744
+      },
+      "prevControl": {
+        "x": 1.44283883432246,
+        "y": 5.597779868883561
+      },
+      "nextControl": null,
+      "isLocked": false,
+      "linkedName": null
+    }
+  ],
+  "rotationTargets": [],
+  "constraintZones": [],
+  "eventMarkers": [
+    {
+      "name": "Suck Piece",
+      "waypointRelativePos": 0.0,
+      "command": {
+        "type": "sequential",
+        "data": {
+          "commands": [
+            {
+              "type": "named",
+              "data": {
+                "name": "Intake"
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "name": "SpinUpShooter",
+      "waypointRelativePos": 1.45,
+      "command": {
+        "type": "parallel",
+        "data": {
+          "commands": []
+        }
+      }
+    }
+  ],
+  "globalConstraints": {
+    "maxVelocity": 5.0,
+    "maxAcceleration": 3.0,
+    "maxAngularVelocity": 360.0,
+    "maxAngularAcceleration": 360.0
+  },
+  "goalEndState": {
+    "velocity": 0,
+    "rotation": 0,
+    "rotateFast": false
+  },
+  "reversed": false,
+  "folder": null,
+  "previewStartingState": {
+    "rotation": 0,
+    "velocity": 0
+  },
+  "useDefaultConstraints": true
+}
