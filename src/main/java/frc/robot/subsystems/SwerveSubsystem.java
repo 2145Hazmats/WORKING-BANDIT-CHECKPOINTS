@@ -23,6 +23,7 @@ import edu.wpi.first.math.util.Units;
 import edu.wpi.first.wpilibj.DriverStation;
 import edu.wpi.first.wpilibj.Timer;
 import edu.wpi.first.wpilibj.DriverStation.Alliance;
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj2.command.Command;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
 import java.io.File;
@@ -42,8 +43,9 @@ import frc.robot.Constants.SwerveConstants;
 public class SwerveSubsystem extends SubsystemBase {
   private final SwerveDrive swerveDrive;
 
-  private Optional<Alliance> alliance = DriverStation.getAlliance();
+  //private Optional<Alliance> alliance = DriverStation.getAlliance();
   private double allianceInverse = 1;
+  //private boolean isRed;
 
   /**
    * Initialize {@link SwerveDrive} with the directory provided.
@@ -60,9 +62,9 @@ public class SwerveSubsystem extends SubsystemBase {
 
     swerveDrive.setHeadingCorrection(false); // Heading correction should only be used while controlling the robot via angle
 
-    if (alliance.isPresent()) {
+    /*if (alliance.isPresent()) {
       if (alliance.get() == DriverStation.Alliance.Red) { allianceInverse = -1; }
-    }
+    }*/
   }
 
 
@@ -91,6 +93,7 @@ public class SwerveSubsystem extends SubsystemBase {
           // Boolean supplier that controls when the path will be mirrored for the red alliance
           // This will flip the path being followed to the red side of the field.
           // THE ORIGIN WILL REMAIN ON THE BLUE SIDE
+          var alliance = DriverStation.getAlliance();
           return alliance.isPresent() ? alliance.get() == DriverStation.Alliance.Red : false;
         },
     this); // Reference to this subsystem to set requirements
@@ -418,7 +421,14 @@ public class SwerveSubsystem extends SubsystemBase {
 
 
   @Override
-  public void periodic() {}
+  public void periodic() {
+/* 
+    if (alliance.get() == DriverStation.Alliance.Red)
+    {isRed = true;}
+    else {isRed = false;}
+
+    SmartDashboard.putBoolean("isREdteam", isRed);*/
+  }
 
 
   @Override
