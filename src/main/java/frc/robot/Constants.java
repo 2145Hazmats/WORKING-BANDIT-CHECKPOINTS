@@ -64,7 +64,7 @@ public final class Constants {
     // TODO: ALL THESE SETPOINTS NEED TO BE UPDATED AFTER ELBOW OFFSET
     public static final double[] kIdleAngleSP             = {-0.25, 0};
     public static final double[] kFloorAngleSP            = {0, 35};
-    public static final double[] kSourceAngleSP           = {-11.8, 3.3};
+    public static final double[] kSourceAngleSP           = {-48.95, 20.88 }; //-60.51, 21.57 -33.31, 9.285
     public static final double[] kAmpAngleSP              = {-115.44, 37.93}; //-113.7, 31.64
     public static final double[] kSpeakerSubwooferAngleSP = {-9, 38}; //31.64
     public static final double[] kSpeakerPodiumAngleSP    = {-34.1, 49};

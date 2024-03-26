@@ -2,8 +2,8 @@
   "version": 1.0,
   "startingPose": {
     "position": {
-      "x": 0.8338753339418218,
-      "y": 6.5463576290918635
+      "x": 0.7460912101976983,
+      "y": 6.603210195079679
     },
     "rotation": 60.0
   },
@@ -11,25 +11,6 @@
     "type": "sequential",
     "data": {
       "commands": [
-        {
-          "type": "parallel",
-          "data": {
-            "commands": [
-              {
-                "type": "named",
-                "data": {
-                  "name": "ArmToFloor"
-                }
-              },
-              {
-                "type": "named",
-                "data": {
-                  "name": "ShootNoteSubwooferNoRegurgitate"
-                }
-              }
-            ]
-          }
-        },
         {
           "type": "path",
           "data": {
@@ -40,30 +21,6 @@
           "type": "path",
           "data": {
             "pathName": "N1-TS"
-          }
-        },
-        {
-          "type": "named",
-          "data": {
-            "name": "FireNote"
-          }
-        },
-        {
-          "type": "path",
-          "data": {
-            "pathName": "TS-C1"
-          }
-        },
-        {
-          "type": "path",
-          "data": {
-            "pathName": "C1-TS"
-          }
-        },
-        {
-          "type": "named",
-          "data": {
-            "name": "FireNote"
           }
         }
       ]

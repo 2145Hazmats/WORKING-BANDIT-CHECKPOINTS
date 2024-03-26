@@ -219,13 +219,20 @@ public class BoxSubsystem extends SubsystemBase {
     .withTimeout(2.0)
     .andThen(setShooterMotorCommand(0));
   }
-  public Command ShootNoteSubwooferNoRegurgitate() {
+  /*public Command ShootNoteSubwooferNoRegurgitate() {
     return setShooterMotorCommand(0.34)
     .withTimeout(BoxConstants.kShooterDelay)
     .andThen(setIntakeMotorCommandThenStop(BoxConstants.kFeedSpeed))
     .withTimeout(2.0)
     .andThen(setShooterMotorCommand(0));
+  }*/
+  public Command ShootNoteSubwooferNoRegurgitate() {
+    return 
+    setShooterFeederCommand(ArmSubsystem::getArmState, false).withTimeout(1.75)
+    .andThen(setShooterFeederCommand(ArmSubsystem::getArmState, true).withTimeout(1.0))
+    .andThen(stopCommand());
   }
+
 
   /**
    * Stops the intake and shooter motor.

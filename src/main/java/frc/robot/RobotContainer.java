@@ -56,7 +56,7 @@ public class RobotContainer {
     NamedCommands.registerCommand("Intake", m_box.setIntakeMotorCommandThenStop(BoxConstants.kIntakeSpeed).withTimeout(1.75));
     NamedCommands.registerCommand("SpinUpShooter", m_box.setShooterMotorCommand(BoxConstants.kTopSpeakerRPM).withTimeout(1));
     NamedCommands.registerCommand("FeedNote", m_box.setIntakeMotorCommand(BoxConstants.kFeedSpeed).withTimeout(0.5));
-    NamedCommands.registerCommand("ShootNoteSubwoofer", m_box.ShootNoteSubwoofer().withTimeout(2.25));
+    NamedCommands.registerCommand("ShootNoteSubwoofer", m_box.ShootNoteSubwoofer().withTimeout(3.75));
     NamedCommands.registerCommand("ShootNoteSubwooferNoRegurgitate", m_box.ShootNoteSubwooferNoRegurgitate().withTimeout(2.5));
     NamedCommands.registerCommand("ArmToIdle", m_arm.setArmPIDCommand(ArmConstants.ArmState.IDLE, true).withTimeout(1.5) );
     NamedCommands.registerCommand("FireNote", m_box.setShooterFeederCommand(ArmSubsystem::getArmState, false).withTimeout(1));
@@ -269,7 +269,7 @@ m_driverController.rightBumper().whileTrue(
         Commands.parallel(
           m_arm.setArmPIDCommand(ArmConstants.ArmState.SOURCE, false),
           m_box.setIntakeMotorCommand(BoxConstants.kSourceIntakeSpeed)
-        ).until(m_box::noteSensorTriggered).andThen(m_arm.setArmPIDCommand(ArmConstants.ArmState.IDLE, false))
+        ).until(m_box::noteSensorTriggered)
       )
     );
 
