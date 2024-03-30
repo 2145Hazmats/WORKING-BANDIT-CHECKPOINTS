@@ -2,8 +2,8 @@
   "version": 1.0,
   "startingPose": {
     "position": {
-      "x": 1.28,
-      "y": 5.528365618134744
+      "x": 1.2745940876497153,
+      "y": 5.564955745296107
     },
     "rotation": 0
   },
@@ -18,26 +18,14 @@
           }
         },
         {
-          "type": "path",
+          "type": "named",
           "data": {
-            "pathName": "CS N2"
-          }
-        },
-        {
-          "type": "path",
-          "data": {
-            "pathName": "CS N1"
-          }
-        },
-        {
-          "type": "path",
-          "data": {
-            "pathName": "CS N3"
+            "name": "IntakeWithChargedShooter"
           }
         }
       ]
     }
   },
-  "folder": "Riley's OP Autos",
+  "folder": null,
   "choreoAuto": false
 }

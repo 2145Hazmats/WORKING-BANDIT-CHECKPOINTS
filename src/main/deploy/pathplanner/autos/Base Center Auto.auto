@@ -2,30 +2,30 @@
   "version": 1.0,
   "startingPose": {
     "position": {
-      "x": 0.7460912101976983,
-      "y": 6.603210195079679
+      "x": 1.2946827624794124,
+      "y": 5.540011548107349
     },
-    "rotation": 60.0
+    "rotation": 0
   },
   "command": {
     "type": "sequential",
     "data": {
       "commands": [
         {
-          "type": "path",
+          "type": "named",
           "data": {
-            "pathName": "TS-N1"
+            "name": "ShootPreload"
           }
         },
         {
           "type": "path",
           "data": {
-            "pathName": "N1-TS"
+            "pathName": "Base Path"
           }
         }
       ]
     }
   },
-  "folder": "Riley's OP Autos",
+  "folder": null,
   "choreoAuto": false
 }

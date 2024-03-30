@@ -233,6 +233,15 @@ public class BoxSubsystem extends SubsystemBase {
     .andThen(stopCommand());
   }
 
+  public Command intakeWithChargedShooter() {
+    return
+    Commands.startEnd(() -> {
+      topShooterPIDController.setReference(BoxConstants.kTopDefaultRPM, ControlType.kVelocity);
+      bottomShooterPIDController.setReference(BoxConstants.kBottomDefaultRPM, ControlType.kVelocity);
+      intakeMotor.set(BoxConstants.kIntakeSpeed);
+    },
+    () -> intakeMotor.set(0), this);
+  }
 
   /**
    * Stops the intake and shooter motor.
@@ -259,6 +268,10 @@ public class BoxSubsystem extends SubsystemBase {
    */
   public boolean noteSensorTriggered() {
     return !noteSensor.get();
+  }
+
+  public boolean noteSensorUntriggered() {
+    return noteSensor.get();
   }
 
 

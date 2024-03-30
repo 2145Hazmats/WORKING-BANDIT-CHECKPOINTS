@@ -30,7 +30,7 @@ public final class Constants {
   /* Constants for the arm subsystem */
   public static class ArmConstants{
     // All of our PID Postions for the arm
-    public static enum ArmState {IDLE, FLOOR, SOURCE, AMP, SHOOT_SUB, SHOOT_PODIUM, SHOOT_HORIZONTAL, CLIMB_1, CLIMB_2, TRAP, MANUAL};
+    public static enum ArmState {IDLE, FLOOR, SOURCE, AMP, SHOOT_SUB, SHOOT_N2, SHOOT_HORIZONTAL, CLIMB_1, CLIMB_2, TRAP, MANUAL};
     // Motor IDs
     public static final int kElbowMotorLeaderID   = 20;
     public static final int kElbowMotorFollowerID = 21;
@@ -67,7 +67,7 @@ public final class Constants {
     public static final double[] kSourceAngleSP           = {-48.95, 20.88 }; //-60.51, 21.57 -33.31, 9.285
     public static final double[] kAmpAngleSP              = {-115.44, 37.93}; //-113.7, 31.64
     public static final double[] kSpeakerSubwooferAngleSP = {-9, 38}; //31.64
-    public static final double[] kSpeakerPodiumAngleSP    = {-34.1, 49};
+    public static final double[] kSpeakerN2AngleSP    = {-34.1, 49}; // we need to ste these values to be not false
     public static final double[] kHorizontalAngleSP       = {-33.4, 28.5};
     public static final double[] kClimb1AngleSP           = {-98, 34};
     public static final double[] kClimb2AngleSP           = {-40.7, 69}; // NEEDS TO BE SET

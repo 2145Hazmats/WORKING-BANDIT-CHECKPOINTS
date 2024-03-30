@@ -1,16 +1,13 @@
 {
-  "robotWidth": 0.47625,
-  "robotLength": 0.48,
+  "robotWidth": 0.78,
+  "robotLength": 0.78,
   "holonomicMode": true,
   "pathFolders": [
-    "AmpHearthLines",
-    "CenterStageWines",
-    "Riley's OP Lines"
+    "Amp Side",
+    "Deep Side",
+    "Center"
   ],
-  "autoFolders": [
-    "Competition Autonomous NOT DONE",
-    "Riley's OP Autos"
-  ],
+  "autoFolders": [],
   "defaultMaxVel": 5.4,
   "defaultMaxAccel": 3.0,
   "defaultMaxAngVel": 360.0,

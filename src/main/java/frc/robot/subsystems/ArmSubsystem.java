@@ -182,9 +182,9 @@ public class ArmSubsystem extends SubsystemBase {
             elbowAngle = ArmConstants.kSpeakerSubwooferAngleSP[0];
             wristAngle = ArmConstants.kSpeakerSubwooferAngleSP[1];
             break;
-          case SHOOT_PODIUM:
-            elbowAngle = ArmConstants.kSpeakerPodiumAngleSP[0];
-            wristAngle = ArmConstants.kSpeakerPodiumAngleSP[1];
+          case SHOOT_N2:
+            elbowAngle = ArmConstants.kSpeakerN2AngleSP[0];
+            wristAngle = ArmConstants.kSpeakerN2AngleSP[1];
             break;
           case TRAP:
             elbowAngle = ArmConstants.kTrapAngleSP[0];

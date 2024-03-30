@@ -52,14 +52,24 @@ public class RobotContainer {
     // Setup PathPlanner and autons
     m_swerve.setupPathPlannerRobot();
     // PathPlanner named commands
-    NamedCommands.registerCommand("ArmToFloor", m_arm.setArmPIDCommand(ArmConstants.ArmState.FLOOR, true).withTimeout(1.5));
-    NamedCommands.registerCommand("Intake", m_box.setIntakeMotorCommandThenStop(BoxConstants.kIntakeSpeed).withTimeout(1.75));
-    NamedCommands.registerCommand("SpinUpShooter", m_box.setShooterMotorCommand(BoxConstants.kTopSpeakerRPM).withTimeout(1));
-    NamedCommands.registerCommand("FeedNote", m_box.setIntakeMotorCommand(BoxConstants.kFeedSpeed).withTimeout(0.5));
-    NamedCommands.registerCommand("ShootNoteSubwoofer", m_box.ShootNoteSubwoofer().withTimeout(3.75));
-    NamedCommands.registerCommand("ShootNoteSubwooferNoRegurgitate", m_box.ShootNoteSubwooferNoRegurgitate().withTimeout(2.5));
-    NamedCommands.registerCommand("ArmToIdle", m_arm.setArmPIDCommand(ArmConstants.ArmState.IDLE, true).withTimeout(1.5) );
-    NamedCommands.registerCommand("FireNote", m_box.setShooterFeederCommand(ArmSubsystem::getArmState, false).withTimeout(1));
+  
+    //NamedCommands.registerCommand("FireNote", m_box.setShooterFeederCommand(ArmSubsystem::getArmState, true).until(m_box::noteSensorUntriggered));
+    //NamedCommands.registerCommand("SpinUpShooter", m_box.setShooterFeederCommand(ArmSubsystem::getArmState, false));
+    //NamedCommands.registerCommand("Intake",m_box.setIntakeMotorCommandThenStop(BoxConstants.kIntakeSpeed).until(m_box::noteSensorTriggered));
+    NamedCommands.registerCommand("IntakeWithChargedShooter",m_box.intakeWithChargedShooter().until(m_box::noteSensorTriggered)); 
+    NamedCommands.registerCommand("ArmToFloor",m_arm.setArmPIDCommand(ArmState.FLOOR, true).withTimeout(.25));
+    //NamedCommands.registerCommand("ArmToIdle",m_arm.setArmPIDCommand(ArmState.IDLE, true).withTimeout(.25));
+    //NamedCommands.registerCommand("ArmToSubwoofer",m_arm.setArmPIDCommand(ArmState.SHOOT_SUB, true).withTimeout(.25));
+    //NamedCommands.registerCommand("ArmToN2",m_arm.setArmPIDCommand(ArmState.SHOOT_N2, true).withTimeout(.25)); 
+    NamedCommands.registerCommand("ShootPreload",
+      Commands.sequence(
+        Commands.parallel(
+          m_arm.setArmPIDCommand(ArmState.SHOOT_SUB, true),
+          m_box.setShooterFeederCommand(ArmSubsystem::getArmState, false)
+        ).withTimeout(1.25),
+        m_box.setShooterFeederCommand(ArmSubsystem::getArmState, true)
+      ).until(m_box::noteSensorUntriggered)
+    );
     // Allows us to pick our auton in smartdash board
     m_autonChooser = AutoBuilder.buildAutoChooser();
     SmartDashboard.putData("Auton Picker", m_autonChooser);
@@ -226,7 +236,7 @@ m_driverController.rightBumper().whileTrue(
     // Arm set point for shooting podium
     m_operatorController.y().whileTrue(
       Commands.parallel(
-        m_arm.setArmPIDCommand(ArmConstants.ArmState.SHOOT_PODIUM, true),
+        m_arm.setArmPIDCommand(ArmConstants.ArmState.SHOOT_N2, true),
         m_box.setShooterFeederCommand(ArmSubsystem::getArmState, false)
       )
     ).onFalse(m_arm.setArmPIDCommand(ArmConstants.ArmState.IDLE, false));
