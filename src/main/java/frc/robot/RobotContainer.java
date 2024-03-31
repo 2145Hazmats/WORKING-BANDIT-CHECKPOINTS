@@ -53,14 +53,14 @@ public class RobotContainer {
     m_swerve.setupPathPlannerRobot();
     // PathPlanner named commands
   
-    //NamedCommands.registerCommand("FireNote", m_box.setShooterFeederCommand(ArmSubsystem::getArmState, true).until(m_box::noteSensorUntriggered));
-    //NamedCommands.registerCommand("SpinUpShooter", m_box.setShooterFeederCommand(ArmSubsystem::getArmState, false));
-    //NamedCommands.registerCommand("Intake",m_box.setIntakeMotorCommandThenStop(BoxConstants.kIntakeSpeed).until(m_box::noteSensorTriggered));
+    NamedCommands.registerCommand("FireNote", m_box.setShooterFeederCommand(ArmSubsystem::getArmState, true).until(m_box::noteSensorUntriggered));
+    NamedCommands.registerCommand("SpinUpShooter", m_box.setShooterFeederCommand(ArmSubsystem::getArmState, false));
+    NamedCommands.registerCommand("Intake",m_box.setIntakeMotorCommandThenStop(BoxConstants.kIntakeSpeed).until(m_box::noteSensorTriggered));
     NamedCommands.registerCommand("IntakeWithChargedShooter",m_box.intakeWithChargedShooter().until(m_box::noteSensorTriggered)); 
-    NamedCommands.registerCommand("ArmToFloor",m_arm.setArmPIDCommand(ArmState.FLOOR, true).withTimeout(.25));
-    //NamedCommands.registerCommand("ArmToIdle",m_arm.setArmPIDCommand(ArmState.IDLE, true).withTimeout(.25));
-    //NamedCommands.registerCommand("ArmToSubwoofer",m_arm.setArmPIDCommand(ArmState.SHOOT_SUB, true).withTimeout(.25));
-    //NamedCommands.registerCommand("ArmToN2",m_arm.setArmPIDCommand(ArmState.SHOOT_N2, true).withTimeout(.25)); 
+    NamedCommands.registerCommand("ArmToFloor",m_arm.setArmPIDCommand(ArmState.FLOOR, true).withTimeout(.5));
+    NamedCommands.registerCommand("ArmToIdle",m_arm.setArmPIDCommand(ArmState.IDLE, true).withTimeout(.5));
+    NamedCommands.registerCommand("ArmToSubwoofer",m_arm.setArmPIDCommand(ArmState.SHOOT_SUB, true).withTimeout(.5));
+    NamedCommands.registerCommand("ArmToN2",m_arm.setArmPIDCommand(ArmState.SHOOT_N2, true).withTimeout(.3)); 
     NamedCommands.registerCommand("ShootPreload",
       Commands.sequence(
         Commands.parallel(

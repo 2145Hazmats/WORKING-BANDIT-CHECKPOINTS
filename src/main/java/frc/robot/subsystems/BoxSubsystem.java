@@ -193,6 +193,9 @@ public class BoxSubsystem extends SubsystemBase {
         case SHOOT_HORIZONTAL:
           shooterSpeed = BoxConstants.kTopHorizontalRPM;
           break;
+        case SHOOT_N2:
+          shooterSpeed = BoxConstants.kTopN2RPM;
+          break;
         default:
           shooterSpeed = BoxConstants.kTopDefaultRPM;
           break;

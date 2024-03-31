@@ -112,11 +112,22 @@
   "constraintZones": [
     {
       "name": "SLOW FOR N2",
-      "minWaypointRelativePos": 0.85,
-      "maxWaypointRelativePos": 1.0999999999999999,
+      "minWaypointRelativePos": 0.95,
+      "maxWaypointRelativePos": 1.0499999999999998,
       "constraints": {
-        "maxVelocity": 0.51,
+        "maxVelocity": 0.1,
         "maxAcceleration": 1.5,
+        "maxAngularVelocity": 360.0,
+        "maxAngularAcceleration": 360.0
+      }
+    },
+    {
+      "name": "SLOW FOR END",
+      "minWaypointRelativePos": 5.5,
+      "maxWaypointRelativePos": 6.0,
+      "constraints": {
+        "maxVelocity": 2.0,
+        "maxAcceleration": 2.0,
         "maxAngularVelocity": 360.0,
         "maxAngularAcceleration": 360.0
       }
@@ -125,15 +136,34 @@
   "eventMarkers": [
     {
       "name": "Intake and Spin up Shooter",
-      "waypointRelativePos": 0.7,
+      "waypointRelativePos": 0.15000000000000002,
       "command": {
-        "type": "parallel",
+        "type": "sequential",
         "data": {
           "commands": [
             {
+              "type": "parallel",
+              "data": {
+                "commands": [
+                  {
+                    "type": "named",
+                    "data": {
+                      "name": "ArmToFloor"
+                    }
+                  },
+                  {
+                    "type": "named",
+                    "data": {
+                      "name": "IntakeWithChargedShooter"
+                    }
+                  }
+                ]
+              }
+            },
+            {
               "type": "named",
               "data": {
-                "name": "IntakeWithChargedShooter"
+                "name": "SpinUpShooter"
               }
             }
           ]
@@ -142,7 +172,7 @@
     },
     {
       "name": "Fire N2",
-      "waypointRelativePos": 1.0,
+      "waypointRelativePos": 0.8,
       "command": {
         "type": "sequential",
         "data": {
@@ -205,7 +235,7 @@
     },
     {
       "name": "Fire C3",
-      "waypointRelativePos": 6.0,
+      "waypointRelativePos": 5.65,
       "command": {
         "type": "sequential",
         "data": {
