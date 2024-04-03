@@ -53,9 +53,9 @@ public class RobotContainer {
     m_swerve.setupPathPlannerRobot();
     // PathPlanner named commands
   
-    NamedCommands.registerCommand("FireNote", m_box.setShooterFeederCommand(ArmSubsystem::getArmState, true).until(m_box::noteSensorUntriggered));
+    NamedCommands.registerCommand("FireNote", m_box.setShooterFeederCommand(ArmSubsystem::getArmState, true).withTimeout(0.5).andThen(m_box.stopCommand()));
     NamedCommands.registerCommand("SpinUpShooter", m_box.setShooterFeederCommand(ArmSubsystem::getArmState, false));
-    NamedCommands.registerCommand("Intake",m_box.setIntakeMotorCommandThenStop(BoxConstants.kIntakeSpeed).until(m_box::noteSensorTriggered));
+    NamedCommands.registerCommand("Intake",m_box.setIntakeMotorCommandThenStop(0.9).until(m_box::noteSensorTriggered));
     NamedCommands.registerCommand("IntakeWithChargedShooter",m_box.intakeWithChargedShooter().until(m_box::noteSensorTriggered)); 
     NamedCommands.registerCommand("ArmToFloor",m_arm.setArmPIDCommand(ArmState.FLOOR, true).withTimeout(.5));
     NamedCommands.registerCommand("ArmToIdle",m_arm.setArmPIDCommand(ArmState.IDLE, true).withTimeout(.5));
@@ -68,8 +68,21 @@ public class RobotContainer {
           m_box.setShooterFeederCommand(ArmSubsystem::getArmState, false)
         ).withTimeout(1.25),
         m_box.setShooterFeederCommand(ArmSubsystem::getArmState, true)
-      ).until(m_box::noteSensorUntriggered)
+      ).withTimeout(1.75)
     );
+    NamedCommands.registerCommand("Shimmy",
+      m_box.setIntakeMotorCommandThenStop(-0.6).withTimeout(0.125).andThen(
+        m_box.setIntakeMotorCommandThenStop(0.6).withTimeout(0.125).andThen(
+          m_box.setIntakeMotorCommandThenStop(-0.6).withTimeout(0.125).andThen(
+            m_box.setIntakeMotorCommandThenStop(0.6).withTimeout(0.125).andThen(
+              m_box.setIntakeMotorCommandThenStop(-0.6).withTimeout(0.125).andThen(
+                m_box.setIntakeMotorCommandThenStop(0.6).withTimeout(0.125)
+              )
+            )
+          )
+        )
+      )
+    ); 
     // Allows us to pick our auton in smartdash board
     m_autonChooser = AutoBuilder.buildAutoChooser();
     SmartDashboard.putData("Auton Picker", m_autonChooser);

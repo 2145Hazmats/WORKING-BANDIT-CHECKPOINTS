@@ -17,8 +17,8 @@ public final class Constants {
     public static final int kDriverControllerPort   = 0;
     public static final int kOperatorControllerPort = 1;
     /* Deadbands */
-    public static final double LEFT_X_DEADBAND  = 0.02;
-    public static final double LEFT_Y_DEADBAND  = 0.02;
+    public static final double LEFT_X_DEADBAND  = 0.04;
+    public static final double LEFT_Y_DEADBAND  = 0.04;
     public static final double RIGHT_X_DEADBAND = 0.02;
     public static final double RIGHT_Y_DEADBAND = 0.02;
     /* Speed Modes */

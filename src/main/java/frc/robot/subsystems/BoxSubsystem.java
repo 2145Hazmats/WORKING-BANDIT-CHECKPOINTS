@@ -241,7 +241,7 @@ public class BoxSubsystem extends SubsystemBase {
     Commands.startEnd(() -> {
       topShooterPIDController.setReference(BoxConstants.kTopDefaultRPM, ControlType.kVelocity);
       bottomShooterPIDController.setReference(BoxConstants.kBottomDefaultRPM, ControlType.kVelocity);
-      intakeMotor.set(BoxConstants.kIntakeSpeed);
+      intakeMotor.set(0.75);
     },
     () -> intakeMotor.set(0), this);
   }
