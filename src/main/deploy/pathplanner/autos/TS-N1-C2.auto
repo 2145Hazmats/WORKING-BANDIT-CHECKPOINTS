@@ -20,7 +20,13 @@
         {
           "type": "path",
           "data": {
-            "pathName": "HACKED Copy of TS-N1-C2"
+            "pathName": "REAL HACKED Copy of TS-N1-C2"
+          }
+        },
+        {
+          "type": "named",
+          "data": {
+            "name": "FireNote"
           }
         }
       ]

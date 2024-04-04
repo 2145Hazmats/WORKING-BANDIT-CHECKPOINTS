@@ -71,18 +71,25 @@ public class RobotContainer {
       ).withTimeout(1.75)
     );
     NamedCommands.registerCommand("Shimmy",
-      m_box.setIntakeMotorCommandThenStop(-0.6).withTimeout(0.125).andThen(
-        m_box.setIntakeMotorCommandThenStop(0.6).withTimeout(0.125).andThen(
-          m_box.setIntakeMotorCommandThenStop(-0.6).withTimeout(0.125).andThen(
-            m_box.setIntakeMotorCommandThenStop(0.6).withTimeout(0.125).andThen(
-              m_box.setIntakeMotorCommandThenStop(-0.6).withTimeout(0.125).andThen(
-                m_box.setIntakeMotorCommandThenStop(0.6).withTimeout(0.125)
+      m_box.setIntakeMotorCommandThenStop(1).withTimeout(0.2).andThen(
+        m_box.setIntakeMotorCommandThenStop(-1).withTimeout(0.1).andThen(
+          m_box.setIntakeMotorCommandThenStop(1).withTimeout(0.2).andThen(
+            m_box.setIntakeMotorCommandThenStop(-1).withTimeout(0.1).andThen(
+              m_box.setIntakeMotorCommandThenStop(1).withTimeout(0.2).andThen(
+                m_box.setIntakeMotorCommandThenStop(-1).withTimeout(0.175)
               )
             )
           )
         )
       )
-    ); 
+    );
+    NamedCommands.registerCommand("TinyShimmy",
+      m_box.setIntakeMotorCommandThenStop(1).withTimeout(0.2).andThen(
+        m_box.setIntakeMotorCommandThenStop(-1).withTimeout(0.1).andThen(
+        )
+      )
+    );
+    NamedCommands.registerCommand("StopShooter", m_box.stopCommand().withTimeout(0.1));
     // Allows us to pick our auton in smartdash board
     m_autonChooser = AutoBuilder.buildAutoChooser();
     SmartDashboard.putData("Auton Picker", m_autonChooser);

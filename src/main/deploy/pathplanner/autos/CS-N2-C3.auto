@@ -22,6 +22,12 @@
           "data": {
             "pathName": "HACKED of CS-N2-C3"
           }
+        },
+        {
+          "type": "named",
+          "data": {
+            "name": "FireNote"
+          }
         }
       ]
     }

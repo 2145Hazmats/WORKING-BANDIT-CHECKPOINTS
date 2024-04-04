@@ -17,15 +17,15 @@
     {
       "anchor": {
         "x": 2.56,
-        "y": 5.52
+        "y": 5.56
       },
       "prevControl": {
         "x": 1.5607152563477658,
-        "y": 5.482184644601876
+        "y": 5.522184644601876
       },
       "nextControl": {
         "x": 3.506759258919321,
-        "y": 5.555827663816469
+        "y": 5.595827663816469
       },
       "isLocked": false,
       "linkedName": null
@@ -65,15 +65,15 @@
     {
       "anchor": {
         "x": 8.0,
-        "y": 3.75
+        "y": 3.9
       },
       "prevControl": {
         "x": 7.191216042519853,
-        "y": 3.9364631602294478
+        "y": 4.086463160229448
       },
       "nextControl": {
         "x": 8.83801711256979,
-        "y": 3.556797207473103
+        "y": 3.706797207473103
       },
       "isLocked": false,
       "linkedName": null
@@ -96,12 +96,12 @@
     },
     {
       "anchor": {
-        "x": 0.98,
-        "y": 5.06
+        "x": 0.96,
+        "y": 5.23
       },
       "prevControl": {
-        "x": 2.349153797369164,
-        "y": 5.06
+        "x": 2.329153797369164,
+        "y": 5.23
       },
       "nextControl": null,
       "isLocked": false,
@@ -162,19 +162,32 @@
       "name": "Intake",
       "waypointRelativePos": 3.4499999999999997,
       "command": {
-        "type": "parallel",
+        "type": "sequential",
         "data": {
           "commands": [
             {
-              "type": "named",
+              "type": "parallel",
               "data": {
-                "name": "ArmToFloor"
+                "commands": [
+                  {
+                    "type": "named",
+                    "data": {
+                      "name": "ArmToFloor"
+                    }
+                  },
+                  {
+                    "type": "named",
+                    "data": {
+                      "name": "Intake"
+                    }
+                  }
+                ]
               }
             },
             {
               "type": "named",
               "data": {
-                "name": "Intake"
+                "name": "ArmToIdle"
               }
             }
           ]
@@ -233,23 +246,6 @@
       }
     },
     {
-      "name": "Fire LAst Note",
-      "waypointRelativePos": 5.8,
-      "command": {
-        "type": "parallel",
-        "data": {
-          "commands": [
-            {
-              "type": "named",
-              "data": {
-                "name": "FireNote"
-              }
-            }
-          ]
-        }
-      }
-    },
-    {
       "name": "SpinUp N2",
       "waypointRelativePos": 1.6,
       "command": {
@@ -260,6 +256,23 @@
               "type": "named",
               "data": {
                 "name": "SpinUpShooter"
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "name": "Wiggler",
+      "waypointRelativePos": 4.3,
+      "command": {
+        "type": "parallel",
+        "data": {
+          "commands": [
+            {
+              "type": "named",
+              "data": {
+                "name": "Shimmy"
               }
             }
           ]
