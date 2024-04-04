@@ -70,7 +70,7 @@ public final class Constants {
     public static final double[] kSpeakerN2AngleSP    = {0, 27}; // we need to ste these values to be not false
     public static final double[] kHorizontalAngleSP       = {-33.4, 28.5};
     public static final double[] kClimb1AngleSP           = {-98, 34};
-    public static final double[] kClimb2AngleSP           = {-40.7, 69}; // NEEDS TO BE SET
+    public static final double[] kClimb2AngleSP           = {-43.6, 71.1};
     public static final double[] kTrapAngleSP             = {0, 0}; // NEEDS TO BE SET
 
     public static final double kManualSpeed = 0.5;
