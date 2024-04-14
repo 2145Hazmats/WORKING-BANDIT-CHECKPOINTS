@@ -16,16 +16,16 @@
     },
     {
       "anchor": {
-        "x": 8.55,
-        "y": 0.55
+        "x": 8.38,
+        "y": -0.1
       },
       "prevControl": {
-        "x": 8.338241636687874,
-        "y": 0.09705585822601909
+        "x": 8.168241636687874,
+        "y": -0.552944141773981
       },
       "nextControl": {
-        "x": 8.88599871045896,
-        "y": 1.268690138918739
+        "x": 8.71599871045896,
+        "y": 0.618690138918739
       },
       "isLocked": false,
       "linkedName": null
@@ -48,16 +48,16 @@
     },
     {
       "anchor": {
-        "x": 0.44,
-        "y": 4.25
+        "x": 0.65,
+        "y": 4.55
       },
       "prevControl": {
-        "x": 0.34162897301543554,
-        "y": 2.3645553161291786
+        "x": 2.333151169379263,
+        "y": 3.121945643891289
       },
       "nextControl": {
-        "x": 0.45416278636920143,
-        "y": 4.521453405409695
+        "x": 0.442728280392535,
+        "y": 4.7258578121017765
       },
       "isLocked": false,
       "linkedName": null
@@ -104,11 +104,6 @@
       "rotateFast": false
     },
     {
-      "waypointRelativePos": 1.0999999999999999,
-      "rotationDegrees": 150.0,
-      "rotateFast": true
-    },
-    {
       "waypointRelativePos": 2.9499999999999997,
       "rotationDegrees": -60.0,
       "rotateFast": false
@@ -116,11 +111,6 @@
     {
       "waypointRelativePos": 3.85,
       "rotationDegrees": 0,
-      "rotateFast": false
-    },
-    {
-      "waypointRelativePos": 1.7999999999999998,
-      "rotationDegrees": 90.0,
       "rotateFast": false
     }
   ],
@@ -306,7 +296,7 @@
     },
     {
       "name": "Shimmy",
-      "waypointRelativePos": 1.25,
+      "waypointRelativePos": 1.55,
       "command": {
         "type": "parallel",
         "data": {
@@ -323,8 +313,8 @@
     }
   ],
   "globalConstraints": {
-    "maxVelocity": 4.0,
-    "maxAcceleration": 2.2,
+    "maxVelocity": 5.4,
+    "maxAcceleration": 3.0,
     "maxAngularVelocity": 360.0,
     "maxAngularAcceleration": 360.0
   },

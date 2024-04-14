@@ -17,15 +17,15 @@
     {
       "anchor": {
         "x": 2.56,
-        "y": 5.46
+        "y": 5.55
       },
       "prevControl": {
         "x": 1.5607152563477658,
-        "y": 5.422184644601876
+        "y": 5.512184644601876
       },
       "nextControl": {
         "x": 3.506759258919321,
-        "y": 5.49582766381647
+        "y": 5.5858276638164694
       },
       "isLocked": false,
       "linkedName": null
@@ -96,12 +96,12 @@
     },
     {
       "anchor": {
-        "x": 0.96,
-        "y": 5.35
+        "x": 1.2971007951345943,
+        "y": 5.547899201212153
       },
       "prevControl": {
-        "x": 2.329153797369164,
-        "y": 5.35
+        "x": 2.6662545925037584,
+        "y": 5.547899201212153
       },
       "nextControl": null,
       "isLocked": false,
@@ -113,7 +113,7 @@
   "eventMarkers": [
     {
       "name": "Intake",
-      "waypointRelativePos": 0.0,
+      "waypointRelativePos": 0.30000000000000004,
       "command": {
         "type": "sequential",
         "data": {
@@ -278,11 +278,28 @@
           ]
         }
       }
+    },
+    {
+      "name": "stop shooter",
+      "waypointRelativePos": 0.0,
+      "command": {
+        "type": "parallel",
+        "data": {
+          "commands": [
+            {
+              "type": "named",
+              "data": {
+                "name": "StopShooter"
+              }
+            }
+          ]
+        }
+      }
     }
   ],
   "globalConstraints": {
-    "maxVelocity": 2.0,
-    "maxAcceleration": 2.0,
+    "maxVelocity": 5.4,
+    "maxAcceleration": 3.0,
     "maxAngularVelocity": 360.0,
     "maxAngularAcceleration": 360.0
   },

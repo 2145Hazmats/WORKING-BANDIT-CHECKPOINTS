@@ -65,15 +65,15 @@
     {
       "anchor": {
         "x": 8.0,
-        "y": 3.9
+        "y": 3.97
       },
       "prevControl": {
         "x": 7.191216042519853,
-        "y": 4.086463160229448
+        "y": 4.156463160229448
       },
       "nextControl": {
         "x": 8.83801711256979,
-        "y": 3.706797207473103
+        "y": 3.7767972074731033
       },
       "isLocked": false,
       "linkedName": null
@@ -96,44 +96,44 @@
     },
     {
       "anchor": {
-        "x": 0.96,
+        "x": 1.6,
         "y": 5.23
       },
       "prevControl": {
-        "x": 2.1236948837838643,
-        "y": 5.951385013918131
+        "x": 2.969153797369164,
+        "y": 5.23
       },
       "nextControl": {
-        "x": 0.6465019492093179,
-        "y": 5.035659714686048
+        "x": 0.23084620263083622,
+        "y": 5.23
       },
       "isLocked": false,
       "linkedName": null
     },
     {
       "anchor": {
-        "x": 2.426549104168107,
-        "y": 4.098792791023527
+        "x": 2.15,
+        "y": 3.5
       },
       "prevControl": {
-        "x": 1.0672518361283791,
-        "y": 4.670251813784654
+        "x": 1.4707714803446723,
+        "y": 3.7019494448404013
       },
       "nextControl": {
-        "x": 3.785846372207835,
-        "y": 3.5273337682624
+        "x": 2.8292285196553277,
+        "y": 3.2980505551595987
       },
       "isLocked": false,
       "linkedName": null
     },
     {
       "anchor": {
-        "x": 1.2971007951345943,
-        "y": 5.547899201212153
+        "x": 0.82,
+        "y": 5.25
       },
       "prevControl": {
-        "x": 2.1220673539777883,
-        "y": 4.251033666118688
+        "x": 1.6221923033860337,
+        "y": 4.696725458786153
       },
       "nextControl": null,
       "isLocked": false,
@@ -296,7 +296,7 @@
     },
     {
       "name": "Wiggler",
-      "waypointRelativePos": 4.7,
+      "waypointRelativePos": 4.3,
       "command": {
         "type": "parallel",
         "data": {
@@ -312,8 +312,48 @@
       }
     },
     {
-      "name": "Fire C3",
-      "waypointRelativePos": 5.9,
+      "name": "INTAKE LAST",
+      "waypointRelativePos": 6.4,
+      "command": {
+        "type": "parallel",
+        "data": {
+          "commands": [
+            {
+              "type": "named",
+              "data": {
+                "name": "ArmToFloor"
+              }
+            },
+            {
+              "type": "named",
+              "data": {
+                "name": "Intake"
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "name": "SPIN UP SHOOTER",
+      "waypointRelativePos": 7.45,
+      "command": {
+        "type": "parallel",
+        "data": {
+          "commands": [
+            {
+              "type": "named",
+              "data": {
+                "name": "SpinUpShooter"
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "name": "FIRE 2nd to last note",
+      "waypointRelativePos": 6.1,
       "command": {
         "type": "parallel",
         "data": {
@@ -329,38 +369,8 @@
       }
     },
     {
-      "name": "Intake last",
-      "waypointRelativePos": 6.8,
-      "command": {
-        "type": "parallel",
-        "data": {
-          "commands": [
-            {
-              "type": "parallel",
-              "data": {
-                "commands": [
-                  {
-                    "type": "named",
-                    "data": {
-                      "name": "ArmToFloor"
-                    }
-                  },
-                  {
-                    "type": "named",
-                    "data": {
-                      "name": "Intake"
-                    }
-                  }
-                ]
-              }
-            }
-          ]
-        }
-      }
-    },
-    {
-      "name": "SpinUpLastShooter",
-      "waypointRelativePos": 7.05,
+      "name": "ArmTo Subwoofer END",
+      "waypointRelativePos": 7.55,
       "command": {
         "type": "parallel",
         "data": {
@@ -368,7 +378,7 @@
             {
               "type": "named",
               "data": {
-                "name": "SpinUpShooter"
+                "name": "ArmToSubwoofer"
               }
             }
           ]
@@ -377,8 +387,8 @@
     }
   ],
   "globalConstraints": {
-    "maxVelocity": 2.0,
-    "maxAcceleration": 2.0,
+    "maxVelocity": 5.4,
+    "maxAcceleration": 3.0,
     "maxAngularVelocity": 360.0,
     "maxAngularAcceleration": 360.0
   },

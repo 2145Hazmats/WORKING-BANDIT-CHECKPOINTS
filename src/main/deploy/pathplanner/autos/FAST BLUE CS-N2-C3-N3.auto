@@ -2,10 +2,10 @@
   "version": 1.0,
   "startingPose": {
     "position": {
-      "x": 0.7565838127431248,
-      "y": 6.604911811820272
+      "x": 1.2971007951345943,
+      "y": 5.547899201212153
     },
-    "rotation": 60.0
+    "rotation": 0
   },
   "command": {
     "type": "sequential",
@@ -20,7 +20,7 @@
         {
           "type": "path",
           "data": {
-            "pathName": "BLUE REAL HACKED Copy of TS-N1-C2"
+            "pathName": "FAST HACKED of CS-N2-C3-N3"
           }
         },
         {
@@ -32,6 +32,6 @@
       ]
     }
   },
-  "folder": "Amp Side",
+  "folder": null,
   "choreoAuto": false
 }

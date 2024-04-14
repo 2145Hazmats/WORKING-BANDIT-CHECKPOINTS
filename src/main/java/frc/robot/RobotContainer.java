@@ -66,9 +66,10 @@ public class RobotContainer {
         Commands.parallel(
           m_arm.setArmPIDCommand(ArmState.SHOOT_SUB, true),
           m_box.setShooterFeederCommand(ArmSubsystem::getArmState, false)
-        ).withTimeout(1.25),
+        ).withTimeout(.73),//.withTimeout(.75),
         m_box.setShooterFeederCommand(ArmSubsystem::getArmState, true)
-      ).withTimeout(1.75)
+      ).withTimeout(.9)//1.00
+
     );
     NamedCommands.registerCommand("Shimmy",
       m_box.setIntakeMotorCommandThenStop(1).withTimeout(0.2).andThen(
@@ -270,12 +271,12 @@ m_driverController.rightBumper().whileTrue(
     ).onFalse(m_arm.setArmPIDCommand(ArmConstants.ArmState.IDLE, false));
 
     // Arm set point for shooting trap
-    m_operatorController.povRight().whileTrue(
+    /*m_operatorController.povRight().whileTrue(
       Commands.parallel(
         m_arm.setArmPIDCommand(ArmConstants.ArmState.TRAP, true),
         m_box.setShooterFeederCommand(ArmSubsystem::getArmState, false)
       )
-    ).onFalse(m_arm.setArmPIDCommand(ArmConstants.ArmState.IDLE, false));
+    ).onFalse(m_arm.setArmPIDCommand(ArmConstants.ArmState.IDLE, false));*/
 
     // Manual control toggle for arm
     m_operatorController.start().toggleOnTrue(
