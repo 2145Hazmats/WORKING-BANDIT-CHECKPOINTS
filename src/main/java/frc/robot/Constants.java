@@ -8,6 +8,7 @@ public final class Constants {
   /* Constants for the swerve chassis */
   public static class SwerveConstants {
     public static final double MAX_SPEED  = 5.4; // maximum m/s for the robot
+    public static final double MAX_ROTATION_SPEED  = 2; // maximum m/s for the robot
     public static final double PATHPLANNER_TRANS_KP = 1;
     public static final double LOOP_TIME  = 0.13; // in seconds, 20ms + 110ms spark max velocity lag
   }
@@ -23,7 +24,7 @@ public final class Constants {
     public static final double RIGHT_Y_DEADBAND = 0.02;
     /* Speed Modes */
     public static final double kFastModeSpeed = 1;
-    public static final double kMidModeSpeed  = 0.6;
+    public static final double kMidModeSpeed  = 0.60;
     public static final double kSlowModeSpeed = 0.3;
   }
 
@@ -60,7 +61,7 @@ public final class Constants {
     // TODO: SET THESE AFTER ENCODER FACTOR
     public static final double kElbowAngleOffset = 0.0;
     // Setpoints for the arm subsystem
-    // First value is Elbow Angle, Second is Wrist Angle. SP = SetPoint
+    // {Elbow Angle, Wrist Angle} SP = SetPoint
     // TODO: ALL THESE SETPOINTS NEED TO BE UPDATED AFTER ELBOW OFFSET
     public static final double[] kIdleAngleSP             = {-0.25, 0};
     public static final double[] kFloorAngleSP            = {0, 35};
@@ -71,9 +72,9 @@ public final class Constants {
     public static final double[] kHorizontalAngleSP       = {-33.4, 28.5};
     public static final double[] kClimb1AngleSP           = {-98, 34};
     public static final double[] kClimb2AngleSP           = {-43.6, 71.1};
-    public static final double[] kTrapAngleSP             = {0, 0}; // NEEDS TO BE SET
+    public static final double[] kTrapAngleSP             = {-85, 51}; // Shoot Subwoofer with intake within bumper bounderies
 
-    public static final double kManualSpeed = 0.5;
+    public static final double kManualSpeed = 0.8;
   }
 
   /* Constants for the box subsystem */
@@ -95,16 +96,16 @@ public final class Constants {
     public static final double kTopShooterFF = 0.00021; //(1/kMaxRPM); // same as kV but in percentage instead of volts?
     public static final double kBottomShooterFF = 0.000219; //(1/kMaxRPM); // same as kV but in percentage instead of volts?
     // Shooter motor speeds
-    public static final double kTopDefaultRPM    = 3000;
-    public static final double kBottomDefaultRPM = 3000;
+    public static final double kTopDefaultRPM    = 4500;//3000 changed for shooter testing
+    public static final double kBottomDefaultRPM = 4500;//3000 changed for shooter testing
     public static final double kTopSpeakerRPM    = 3000;
     public static final double kBottomSpeakerRPM = 3000;
     public static final double kTopAmpRPM    = 1200;
     public static final double kBottomAmpRPM = 1200;
-    public static final double kTopHorizontalRPM    = 4000;
-    public static final double kBottomHorizontalRPM = 4000;
-    public static final double kTopN2RPM = 3700;
-    public static final double kBottomN2RPM = 3700;
+    public static final double kTopHorizontalRPM    = 4500;
+    public static final double kBottomHorizontalRPM = 4500;
+    public static final double kTopN2RPM = 5700;
+    public static final double kBottomN2RPM = 5700;
     //public static final double kTopYeetRPM    = 2500;
     //public static final double kBottomYeetRPM = 2500;
     // RPM error range
@@ -121,7 +122,7 @@ public final class Constants {
     public static final double kRegurgitateTime  = 0.25;
   }
 
-  /*
+  
   public static class LimelightConstants {
     // Wrist offsets
     public static final double wristAngleOffset = 0.0;  // in degrees
@@ -131,6 +132,6 @@ public final class Constants {
     public static final double speakerHeight = 0.00;     // height to the middle of the speaker opening
     public static final double speakerOffsetX = 0.22;    // distance to center of speaker opening
   }
-  */
+  
 
 }

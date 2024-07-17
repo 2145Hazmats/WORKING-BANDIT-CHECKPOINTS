@@ -2,8 +2,8 @@
   "version": 1.0,
   "startingPose": {
     "position": {
-      "x": 1.2946827624794124,
-      "y": 5.540011548107349
+      "x": 1.2971007951345943,
+      "y": 5.547899201212153
     },
     "rotation": 0
   },
@@ -20,7 +20,13 @@
         {
           "type": "path",
           "data": {
-            "pathName": "Base Path"
+            "pathName": " RED HACKED of CS-N2-C3-N3"
+          }
+        },
+        {
+          "type": "named",
+          "data": {
+            "name": "FireNote"
           }
         }
       ]

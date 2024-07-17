@@ -10,6 +10,7 @@ import com.pathplanner.lib.auto.AutoBuilder;
 import com.pathplanner.lib.auto.NamedCommands;
 
 import edu.wpi.first.wpilibj.Filesystem;
+import edu.wpi.first.wpilibj.TimedRobot;
 import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj2.command.Command;
@@ -23,7 +24,7 @@ import frc.robot.Constants.ArmConstants.ArmState;
 //import frc.robot.commands.IdleArmCommand;
 import frc.robot.subsystems.ArmSubsystem;
 import frc.robot.subsystems.BoxSubsystem;
-//import frc.robot.subsystems.LimelightSubsystem;
+import frc.robot.subsystems.LimelightSubsystem;
 import frc.robot.subsystems.SwerveSubsystem;
 
 
@@ -34,7 +35,7 @@ public class RobotContainer {
   private final SwerveSubsystem m_swerve = new SwerveSubsystem(new File (Filesystem.getDeployDirectory(), "swerve"));
   private final BoxSubsystem m_box = new BoxSubsystem();
   private final ArmSubsystem m_arm = new ArmSubsystem();
-  //private final LimelightSubsystem m_limelight = new LimelightSubsystem(m_swerve);
+  private final LimelightSubsystem m_limelight = new LimelightSubsystem();
   // Auton chooser
   private SendableChooser<Command> m_autonChooser;
 
@@ -139,6 +140,17 @@ public class RobotContainer {
     ));
     */
 
+    m_driverController.a().whileTrue(     
+        m_swerve.driveCommandAngularVelocity(
+          () -> m_limelight.limelight_range_proportional(),
+          () -> -m_driverController.getLeftY(),
+          () -> m_limelight.limelight_aim_proportional(),
+          OperatorConstants.kFastModeSpeed,// * climbingSlowMode,
+          false
+        )
+          );
+    
+
     // Resets the gyro
     m_driverController.back().onTrue(
       m_swerve.runOnce(()->{
@@ -212,7 +224,7 @@ m_driverController.rightBumper().whileTrue(
     // When the button is released, the arm goes to idle position and the m_box default command is ran
     m_operatorController.leftTrigger().whileTrue(
       m_box.setShooterFeederCommand(ArmSubsystem::getArmState, true)
-    ).onFalse(m_arm.setArmPIDCommand(ArmConstants.ArmState.IDLE, false));
+    );//.onFalse(m_arm.setArmPIDCommand(ArmConstants.ArmState.IDLE, false)); altered for testing
 
     // Intakes note into robot
     m_operatorController.leftBumper().whileTrue(m_box.setIntakeMotorCommand(BoxConstants.kIntakeSpeed));
@@ -223,17 +235,18 @@ m_driverController.rightBumper().whileTrue(
     // Smartshoot button, only shoots the note when Velocity is correct and the button is held down.
     m_operatorController.rightTrigger().whileTrue(
       Commands.sequence(
+         m_box.setShooterFeederCommand(ArmSubsystem::getArmState, false).withTimeout(.01),
         Commands.waitUntil(m_box::isVelocityReached),
         m_box.setShooterFeederCommand(ArmSubsystem::getArmState, true)
       )
-    ).onFalse(m_arm.setArmPIDCommand(ArmConstants.ArmState.IDLE, false));
+    );//.onFalse(m_arm.setArmPIDCommand(ArmConstants.ArmState.IDLE, false)); removed for temparary testing
   
     // Arm set point for climbing
     m_operatorController.button(9).whileTrue(
       m_arm.setArmPIDCommand(ArmConstants.ArmState.CLIMB_1, false)
     );
 
-    m_operatorController.button(10).onTrue(m_arm.setArmPIDCommand(ArmConstants.ArmState.CLIMB_2, true));
+    //m_operatorController.button(10).onTrue(m_arm.setArmPIDCommand(ArmConstants.ArmState.CLIMB_2, true));
     
       // Arm set point for shooting speaker from subwoofer
     m_operatorController.a().whileTrue(
@@ -260,7 +273,7 @@ m_driverController.rightBumper().whileTrue(
         m_arm.setArmPIDCommand(ArmConstants.ArmState.SHOOT_N2, true),
         m_box.setShooterFeederCommand(ArmSubsystem::getArmState, false)
       )
-    ).onFalse(m_arm.setArmPIDCommand(ArmConstants.ArmState.IDLE, false));
+    );//.onFalse(m_arm.setArmPIDCommand(ArmConstants.ArmState.IDLE, false)); //altered for shooter testing
 
     // Arm set point for shooting horizontal across the field
     m_operatorController.povLeft().whileTrue(
@@ -303,6 +316,13 @@ m_driverController.rightBumper().whileTrue(
         ).until(m_box::noteSensorTriggered)
       )
     );
+    
+    m_operatorController.povRight().whileTrue(
+      Commands.parallel(
+          m_arm.setArmPIDCommand(ArmConstants.ArmState.TRAP, true),
+          m_box.setShooterFeederCommand(ArmSubsystem::getArmState, false)
+        )
+      ).onFalse(m_arm.setArmPIDCommand(ArmConstants.ArmState.IDLE, false));
 
     // Reset wrist encoder
     m_operatorController.back().onTrue(Commands.runOnce(() -> m_arm.resetWristEncoder()));
