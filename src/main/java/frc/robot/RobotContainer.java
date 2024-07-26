@@ -140,16 +140,28 @@ public class RobotContainer {
     ));
     */
 
-    m_driverController.a().whileTrue(     
+     m_driverController.a().whileTrue(     
         m_swerve.driveCommandAngularVelocity(
-          () -> m_limelight.limelight_range_proportional(),
+          () -> m_limelight.limelight_range_proportional(),//m_limelight.limelight_range_proportional()
           () -> -m_driverController.getLeftY(),
           () -> m_limelight.limelight_aim_proportional(),
           OperatorConstants.kFastModeSpeed,// * climbingSlowMode,
           false
-        )
-          );
-    
+        ).alongWith(Commands.parallel(
+        m_arm.setArmPIDCommand(ArmConstants.ArmState.SHOOT_SUB, true),
+        m_box.setShooterFeederCommand(ArmSubsystem::getArmState, false)
+      )
+    )).onFalse(m_arm.setArmPIDCommand(ArmConstants.ArmState.IDLE, false));
+
+
+    m_driverController.b().whileTrue(     
+        m_swerve.driveCommandAngularVelocity(
+          () -> 0,//m_limelight.limelight_range_proportional()
+          () ->0,
+          () -> m_limelight.limelight_aim_proportional(),
+          OperatorConstants.kFastModeSpeed,// * climbingSlowMode,
+          false
+        ));
 
     // Resets the gyro
     m_driverController.back().onTrue(
@@ -159,7 +171,7 @@ public class RobotContainer {
     );
     
     // Medium speed
-    m_driverController.rightTrigger().whileTrue(
+    m_operatorController.rightTrigger().whileTrue(
       m_swerve.driveCommandAngularVelocity(
         () -> -m_driverController.getLeftY(),
         () -> -m_driverController.getLeftX(),
@@ -233,13 +245,13 @@ m_driverController.rightBumper().whileTrue(
     m_operatorController.rightBumper().whileTrue(m_box.YeetCommand(BoxConstants.kRegurgitateSpeed, BoxConstants.kRegurgitateSpeed));
 
     // Smartshoot button, only shoots the note when Velocity is correct and the button is held down.
-    m_operatorController.rightTrigger().whileTrue(
+    m_driverController.rightTrigger().whileTrue(
       Commands.sequence(
          m_box.setShooterFeederCommand(ArmSubsystem::getArmState, false).withTimeout(.01),
         Commands.waitUntil(m_box::isVelocityReached),
         m_box.setShooterFeederCommand(ArmSubsystem::getArmState, true)
       )
-    );//.onFalse(m_arm.setArmPIDCommand(ArmConstants.ArmState.IDLE, false)); removed for temparary testing
+    ).onFalse(m_arm.setArmPIDCommand(ArmConstants.ArmState.IDLE, false));// removed for temparary testing
   
     // Arm set point for climbing
     m_operatorController.button(9).whileTrue(

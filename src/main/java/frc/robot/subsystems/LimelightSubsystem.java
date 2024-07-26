@@ -32,7 +32,7 @@ public class LimelightSubsystem extends SubsystemBase {
     /**
      * Gets the yaw angle from the Limelight to the middle of the apriltag
      */
-    public double getTargetRotation() {
+    /*public double getTargetRotation() {
         // Returns a rotation value if the limelight has a valid apriltag target
         if (LimelightHelpers.getTV("") == true) {
             return getCameraTransform(4); // I hope this is yaw
@@ -44,7 +44,7 @@ public class LimelightSubsystem extends SubsystemBase {
     /**
      * Returns the angle the wrist should be at to shoot the speaker
      */
-    public double getLimelightWristAngle() {
+   /*  public double getLimelightWristAngle() {
         double adjacent = getCameraTransform(2) + LimelightConstants.wristPivotOffsetX - LimelightConstants.speakerOffsetX;
         double opposite = LimelightConstants.speakerHeight - LimelightConstants.wristPivotOffsetY;
         return (LimelightConstants.wristAngleOffset + (Math.atan(opposite/adjacent)*180/Math.PI));
@@ -59,7 +59,7 @@ public class LimelightSubsystem extends SubsystemBase {
         return camtrans[index];
     }
 
-
+*/
     @Override
     public void periodic() {
         SmartDashboard.putNumber("getTX", LimelightHelpers.getTX("limelight"));
@@ -73,10 +73,10 @@ public class LimelightSubsystem extends SubsystemBase {
         SmartDashboard.putNumber("getBotPose2d X", LimelightHelpers.getBotPose2d("").getX());
         SmartDashboard.putNumber("getBotPose2d Y", LimelightHelpers.getBotPose2d("").getY());
 
-        SmartDashboard.putNumber("Target Distance", -(getCameraTransform(2)));
+      /*   SmartDashboard.putNumber("Target Distance", -(getCameraTransform(2)));
         SmartDashboard.putNumber("Target Lateral", getCameraTransform(0));
         SmartDashboard.putNumber("Target Height", getCameraTransform(1));
-        SmartDashboard.putNumber("Target Rotation", getCameraTransform(4));
+        SmartDashboard.putNumber("Target Rotation", getCameraTransform(4));*/
 
   }
 
@@ -91,7 +91,7 @@ public class LimelightSubsystem extends SubsystemBase {
     // if it is too high, the robot will oscillate.
     // if it is too low, the robot will never reach its target
     // if the robot never turns in the correct direction, kP should be inverted.
-    double kP = .015; //.035
+    double kP = .0205; //.02
 
     // tx ranges from (-hfov/2) to (hfov/2) in degrees. If your target is on the rightmost edge of 
     // your limelight 3 feed, tx should return roughly 31 degrees.
@@ -118,7 +118,7 @@ public class LimelightSubsystem extends SubsystemBase {
     return targetingForwardSpeed;
   }
 
-  private void drive(boolean fieldRelative, DoubleSupplier leftY, DoubleSupplier leftX, DoubleSupplier rightX, BooleanSupplier Abutton) {
+ /*  private void drive(boolean fieldRelative, DoubleSupplier leftY, DoubleSupplier leftX, DoubleSupplier rightX, BooleanSupplier Abutton) {
     // Get the x speed. We are inverting this because Xbox controllers return
     // negative values when we push forward.
     var xSpeed =
@@ -139,7 +139,7 @@ public class LimelightSubsystem extends SubsystemBase {
     var rot =
         -m_rotLimiter.calculate(MathUtil.applyDeadband(rightX.getAsDouble(), 0.02))
             * SwerveConstants.MAX_ROTATION_SPEED;
-  }
+  }*/
 
 }
 
